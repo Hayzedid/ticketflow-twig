@@ -1,0 +1,173 @@
+{% extends "base.twig" %}
+
+{% block title %}Dashboard - TicketApp{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-900">TicketApp</h1>
+                <nav class="flex space-x-4">
+                    <a href="/app" class="nav-link active">Dashboard</a>
+                    <a href="/app/tickets" class="nav-link">Tickets</a>
+                    <a href="/auth/logout" class="nav-link">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-6">
+        {% for message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        <div class="mb-8">
+            <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
+            <p class="mt-2 text-sm text-gray-700">
+                Welcome back, {{ user.name }}! Here's what's happening with your tickets today.
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                                <span class="text-white text-sm font-medium">{{ stats.total }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Tickets</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ stats.total }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                                <span class="text-white text-sm font-medium">{{ stats.open }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Open Tickets</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ stats.open }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                                <span class="text-white text-sm font-medium">{{ stats.in_progress }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">In Progress</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ stats.in_progress }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-8 h-8 bg-gray-500 rounded-md flex items-center justify-center">
+                                <span class="text-white text-sm font-medium">{{ stats.closed }}</span>
+                            </div>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Closed</dt>
+                                <dd class="text-lg font-medium text-gray-900">{{ stats.closed }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <a href="/app/tickets/create" class="relative group bg-white p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">➕</div>
+                        <h3 class="text-lg font-medium text-gray-900">Create New Ticket</h3>
+                        <p class="mt-2 text-sm text-gray-500">Submit a new support ticket or feature request.</p>
+                    </div>
+                </a>
+
+                <a href="/app/tickets" class="relative group bg-white p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">📋</div>
+                        <h3 class="text-lg font-medium text-gray-900">View All Tickets</h3>
+                        <p class="mt-2 text-sm text-gray-500">Browse and manage all your support tickets.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Tickets -->
+        {% if recent_tickets %}
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Tickets</h3>
+                    <a href="/app/tickets" class="text-sm font-medium text-primary-600 hover:text-primary-500">
+                        View all
+                    </a>
+                </div>
+                <div class="flow-root">
+                    <ul class="-my-5 divide-y divide-gray-200">
+                        {% for ticket in recent_tickets %}
+                        <li class="py-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                        🎫
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900 truncate">
+                                        #{{ ticket.id }} - {{ ticket.title }}
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                        Assigned to {{ ticket.assignee }} • {{ ticket.created_at|date('M j, Y') }}
+                                    </p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="badge badge-{{ ticket.priority }}">{{ ticket.priority }}</span>
+                                    <span class="badge badge-{{ ticket.status }}">{{ ticket.status|replace({'_': ' '}) }}</span>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</div>
+{% endblock %}

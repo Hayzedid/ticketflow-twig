@@ -1,0 +1,175 @@
+{% extends "base.twig" %}
+
+{% block title %}Create New Ticket - TicketApp{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-900">TicketApp</h1>
+                <nav class="flex space-x-4">
+                    <a href="/app" class="nav-link">Dashboard</a>
+                    <a href="/app/tickets" class="nav-link">Tickets</a>
+                    <a href="/auth/logout" class="nav-link">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-6">
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex items-center">
+                <a href="/app/tickets" class="mr-4 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+                    ← Back to tickets
+                </a>
+            </div>
+            <h1 class="mt-2 text-2xl font-semibold text-gray-900">Create New Ticket</h1>
+            <p class="mt-1 text-sm text-gray-600">
+                Fill out the form below to create a new support ticket.
+            </p>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white shadow rounded-lg">
+            <form method="POST" action="/app/tickets/create" class="space-y-6 p-6">
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="title" class="label">
+                        Title <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        id="title"
+                        name="title"
+                        type="text"
+                        required
+                        class="input {% if errors.title %}border-red-300{% endif %}"
+                        placeholder="Enter a descriptive title for your ticket"
+                        maxlength="100"
+                        value="{{ data.title }}"
+                    />
+                    {% if errors.title %}
+                        <p class="form-error">{{ errors.title }}</p>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-gray-500">
+                        <span id="title-count">{{ data.title|length|default(0) }}</span>/100 characters
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description" class="label">Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        class="input {% if errors.description %}border-red-300{% endif %}"
+                        placeholder="Provide detailed information about the issue or request"
+                        maxlength="1000"
+                    >{{ data.description }}</textarea>
+                    {% if errors.description %}
+                        <p class="form-error">{{ errors.description }}</p>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-gray-500">
+                        <span id="description-count">{{ data.description|length|default(0) }}</span>/1000 characters
+                    </p>
+                </div>
+
+                <!-- Status and Priority Row -->
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                    <!-- Status -->
+                    <div class="form-group">
+                        <label for="status" class="label">
+                            Status <span class="text-red-500">*</span>
+                        </label>
+                        <select
+                            id="status"
+                            name="status"
+                            required
+                            class="input {% if errors.status %}border-red-300{% endif %}"
+                        >
+                            <option value="open" {% if data.status == 'open' or not data.status %}selected{% endif %}>Open</option>
+                            <option value="in_progress" {% if data.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                            <option value="closed" {% if data.status == 'closed' %}selected{% endif %}>Closed</option>
+                        </select>
+                        {% if errors.status %}
+                            <p class="form-error">{{ errors.status }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Priority -->
+                    <div class="form-group">
+                        <label for="priority" class="label">Priority</label>
+                        <select
+                            id="priority"
+                            name="priority"
+                            class="input {% if errors.priority %}border-red-300{% endif %}"
+                        >
+                            <option value="low" {% if data.priority == 'low' %}selected{% endif %}>Low</option>
+                            <option value="medium" {% if data.priority == 'medium' or not data.priority %}selected{% endif %}>Medium</option>
+                            <option value="high" {% if data.priority == 'high' %}selected{% endif %}>High</option>
+                        </select>
+                        {% if errors.priority %}
+                            <p class="form-error">{{ errors.priority }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+                    <a href="/app/tickets" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Create Ticket
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Help Text -->
+        <div class="mt-6 bg-blue-50 border border-blue-200 rounded-md p-4">
+            <div class="flex">
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-blue-800">
+                        Tips for creating effective tickets
+                    </h3>
+                    <div class="mt-2 text-sm text-blue-700">
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Use a clear and descriptive title</li>
+                            <li>Provide detailed steps to reproduce the issue</li>
+                            <li>Include relevant error messages or screenshots</li>
+                            <li>Set appropriate priority based on business impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Character counters
+    const titleInput = document.getElementById('title');
+    const titleCount = document.getElementById('title-count');
+    const descriptionInput = document.getElementById('description');
+    const descriptionCount = document.getElementById('description-count');
+
+    if (titleInput && titleCount) {
+        titleInput.addEventListener('input', function() {
+            titleCount.textContent = this.value.length;
+        });
+    }
+
+    if (descriptionInput && descriptionCount) {
+        descriptionInput.addEventListener('input', function() {
+            descriptionCount.textContent = this.value.length;
+        });
+    }
+});
+</script>
+{% endblock %}
