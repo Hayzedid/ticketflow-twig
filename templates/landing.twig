@@ -3,142 +3,152 @@
 {% block title %}TicketApp - Ticket Management Made Simple{% endblock %}
 
 {% block content %}
-<div class="bg-white">
-    <!-- Hero Section -->
-    <div class="relative bg-white overflow-hidden hero-wave">
-        <div class="container">
-            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                <main class="mt-10 mx-auto px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                    <div class="sm:text-center lg:text-left">
-                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="block">Ticket Management</span>
-                            <span class="block text-primary-600">Made Simple</span>
-                        </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                            Streamline your support process with our intuitive ticket management system. 
-                            Get started today and see the difference for yourself.
-                        </p>
-                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <div class="rounded-md shadow">
-                                <a href="/auth/signup" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10">
-                                    Get started
-                                </a>
-                            </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="/auth/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-700 bg-blue-50 hover:bg-blue-100 md:py-4 md:text-lg md:px-10">
-                                    Sign in
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+<div class="min-h-screen relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800">
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="animate-float absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-xl"></div>
+            <div class="animate-float absolute top-40 right-20 w-24 h-24 bg-pink-300 rounded-full blur-lg" style="animation-delay: 1s"></div>
+            <div class="animate-float absolute bottom-20 left-1/4 w-40 h-40 bg-blue-300 rounded-full blur-2xl" style="animation-delay: 2s"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">
+                TicketFlow
+            </div>
+            <div class="space-x-4">
+                <a href="/auth/login" class="text-white hover:text-purple-200 transition-colors">
+                    Login
+                </a>
+                <a href="/auth/signup" class="btn btn-secondary">
+                    Get Started
+                </a>
             </div>
         </div>
-        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" 
-                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" 
-                 alt="Team collaboration">
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative z-10 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center">
+                <div class="animate-fadeIn">
+                    <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                        Ticket Management
+                        <span class="block bg-gradient-to-r from-pink-400 to-purple-300 bg-clip-text text-transparent">
+                            Reimagined
+                        </span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-purple-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Transform your support workflow with our beautiful, intuitive ticket management system. 
+                        Built for modern teams who demand excellence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="/auth/signup" class="btn btn-primary text-lg px-8 py-4 animate-pulse">
+                            Start Free Trial
+                        </a>
+                        <a href="/auth/login" class="btn btn-secondary text-lg px-8 py-4">
+                            Sign In
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Features Section -->
-    <div class="py-12 bg-white">
-        <div class="container">
-            <div class="lg:text-center">
-                <h2 class="text-base text-primary-600 font-semibold tracking-wide uppercase">Features</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    A better way to manage support tickets
-                </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                    Our platform provides everything you need to efficiently manage support tickets and keep your customers happy.
+    <div class="relative py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4">
+                    Why Choose TicketFlow?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the future of support management with our cutting-edge features
                 </p>
             </div>
 
-            <div class="mt-10">
-                <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-                    <div class="relative">
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                            ✓
-                        </div>
-                        <div class="ml-16">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Easy Ticket Creation</h3>
-                            <p class="mt-2 text-base text-gray-500">Quickly create and submit support tickets with all the necessary details.</p>
-                        </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card p-6 text-center animate-fadeIn">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white text-2xl">✓</span>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Easy Ticket Creation</h3>
+                    <p class="text-gray-600">Quickly create and submit support tickets with all the necessary details.</p>
+                </div>
 
-                    <div class="relative">
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                            ⚡
-                        </div>
-                        <div class="ml-16">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Real-time Updates</h3>
-                            <p class="mt-2 text-base text-gray-500">Get instant notifications and updates on your support tickets.</p>
-                        </div>
+                <div class="card p-6 text-center animate-fadeIn" style="animation-delay: 0.1s">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white text-2xl">⚡</span>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-time Updates</h3>
+                    <p class="text-gray-600">Get instant notifications and updates on your support tickets.</p>
+                </div>
 
-                    <div class="relative">
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                            👥
-                        </div>
-                        <div class="ml-16">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Team Collaboration</h3>
-                            <p class="mt-2 text-base text-gray-500">Easily assign tickets to team members and collaborate on solutions.</p>
-                        </div>
+                <div class="card p-6 text-center animate-fadeIn" style="animation-delay: 0.2s">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white text-2xl">👥</span>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Team Collaboration</h3>
+                    <p class="text-gray-600">Easily assign tickets to team members and collaborate on solutions.</p>
+                </div>
 
-                    <div class="relative">
-                        <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary-500 text-white">
-                            📊
-                        </div>
-                        <div class="ml-16">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Powerful Dashboard</h3>
-                            <p class="mt-2 text-base text-gray-500">Track all your tickets and their statuses from a single dashboard.</p>
-                        </div>
+                <div class="card p-6 text-center animate-fadeIn" style="animation-delay: 0.3s">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white text-2xl">📊</span>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Powerful Dashboard</h3>
+                    <p class="text-gray-600">Track all your tickets and their statuses from a single dashboard.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- CTA Section -->
-    <div class="bg-gray-50">
-        <div class="container py-12 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                <span class="block">Ready to dive in?</span>
-                <span class="block text-primary-600">Start your free trial today.</span>
+    <div class="relative py-20 bg-gradient-to-r from-purple-600 to-blue-600">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-4xl font-extrabold text-white mb-4">
+                Ready to Transform Your Support?
             </h2>
-            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-                <div class="inline-flex rounded-md shadow">
-                    <a href="/auth/signup" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700">
-                        Get started
-                    </a>
-                </div>
-                <div class="ml-3 inline-flex rounded-md shadow">
-                    <a href="/auth/login" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50">
-                        Sign in
-                    </a>
-                </div>
+            <p class="text-xl text-purple-100 mb-8">
+                Join thousands of teams already using TicketFlow to deliver exceptional customer support.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/auth/signup" class="btn btn-primary text-lg px-8 py-4">
+                    Start Free Trial
+                </a>
+                <a href="/auth/login" class="btn btn-secondary text-lg px-8 py-4">
+                    Sign In
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white">
-        <div class="container py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                <div class="px-5 py-2">
-                    <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4">TicketFlow</div>
+                <p class="text-gray-400 mb-6">
+                    The modern way to manage support tickets
+                </p>
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="/" class="text-gray-400 hover:text-white transition-colors">
+                        Home
+                    </a>
+                    <a href="/auth/login" class="text-gray-400 hover:text-white transition-colors">
+                        Sign In
+                    </a>
+                    <a href="/auth/signup" class="text-gray-400 hover:text-white transition-colors">
+                        Sign Up
+                    </a>
                 </div>
-                <div class="px-5 py-2">
-                    <a href="/auth/login" class="text-base text-gray-500 hover:text-gray-900">Sign in</a>
-                </div>
-                <div class="px-5 py-2">
-                    <a href="/auth/signup" class="text-base text-gray-500 hover:text-gray-900">Sign up</a>
-                </div>
-            </nav>
-            <p class="mt-8 text-center text-base text-gray-400">
-                &copy; {{ "now"|date("Y") }} TicketApp. All rights reserved.
-            </p>
+                <p class="text-gray-500 text-sm">
+                    &copy; {{ "now"|date("Y") }} TicketFlow. All rights reserved.
+                </p>
+            </div>
         </div>
     </footer>
 </div>
