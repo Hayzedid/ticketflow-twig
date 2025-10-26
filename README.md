@@ -1,41 +1,41 @@
-# 🎫 TicketFlow - Twig/PHP Implementation
+# TicketFlow - Twig/PHP Implementation
 
 A stunning, modern ticket management web application built with PHP and Twig templating engine, featuring premium UI design, smooth animations, and comprehensive functionality.
 
-## ✨ Features
+## Features
 
-### 🎨 **Modern UI Design**
+### **Modern UI Design**
 - **Glassmorphism Effects**: Beautiful frosted glass design with backdrop blur
 - **Gradient Backgrounds**: Stunning purple-to-blue gradient themes
 - **Smooth Animations**: Fade-in, slide-in, and floating animations
 - **Inter Typography**: Modern, professional font family
 - **Responsive Design**: Mobile-first approach with max-width 1440px container
 
-### 🔐 **Authentication System**
+### **Authentication System**
 - **Secure Login/Signup**: Server-side form validation and error handling
 - **Protected Routes**: Session-based route protection
 - **Session Management**: PHP session-based authentication with security
 
-### 📊 **Dashboard & Analytics**
+### **Dashboard & Analytics**
 - **Statistics Overview**: Real-time ticket metrics and insights
 - **Quick Actions**: Fast access to common operations
 - **Modern Cards**: Glassmorphism design with hover effects
 
-### 🎟️ **Ticket Management**
+### **Ticket Management**
 - **Full CRUD Operations**: Create, Read, Update, Delete tickets
 - **Priority Levels**: Low, Medium, High priority system
 - **Status Tracking**: Open, In Progress, Closed status management
 - **Search & Filter**: Advanced filtering capabilities
 
-### 🎯 **Premium Features**
+### **Premium Features**
 - **Micro-interactions**: Button hover effects and shimmer animations
 - **Form Validation**: Server-side validation with clear error messages
 - **Loading States**: Elegant loading indicators and transitions
 - **Accessibility**: WCAG compliant design and keyboard navigation
 
-## 🚀 Tech Stack
+## Tech Stack
 
-- **PHP 7.4+** - Server-side programming language
+- **PHP 8.1** - Server-side programming language
 - **Twig 3.0** - Modern templating engine for PHP
 - **Symfony HttpFoundation** - HTTP abstraction layer
 - **Custom CSS** - Hand-crafted modern design system
