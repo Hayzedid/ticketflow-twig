@@ -133,6 +133,11 @@ class Application
                     return $this->requireAuth() ?: $this->handleDeleteTicket($ticketId);
                 }
                 
+                // Handle static files
+                if (preg_match('/^\/assets\/(.+)$/', $path, $matches)) {
+                    return $this->serveStaticFile($matches[1]);
+                }
+                
                 return $this->notFoundPage();
         }
     }
@@ -479,5 +484,35 @@ class Application
         }
         
         return $errors;
+    }
+
+    private function serveStaticFile($filename)
+    {
+        $filePath = __DIR__ . '/../public/assets/' . $filename;
+        
+        if (!file_exists($filePath)) {
+            return new Response('File not found', 404);
+        }
+        
+        $mimeTypes = [
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            'png' => 'image/png',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'gif' => 'image/gif',
+            'svg' => 'image/svg+xml',
+        ];
+        
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
+        
+        $content = file_get_contents($filePath);
+        
+        $response = new Response($content);
+        $response->headers->set('Content-Type', $mimeType);
+        $response->headers->set('Cache-Control', 'public, max-age=3600');
+        
+        return $response;
     }
 }
